@@ -21,6 +21,15 @@ export default class ValueController {
       next(error);
     }
   }
+
+  async getById(req, res, next) {
+    try {
+      let data = await valueService.findById(req.body);
+      res.status(201).send(data)
+    } catch (e) {
+      next(e);
+    }
+  }
   async create(req, res, next) {
     try {
       let data = await valueService.create(req.body);
